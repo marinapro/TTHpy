@@ -11,6 +11,8 @@ while tickets_remaining > 0:
     name = input("What is your name?  ")
     try:
         tickets_required = int(input("Hi {},\nHow many tickets would you like to purchase?  ".format(name)))
+        if tickets_required <= 0:
+            raise ValueError("You've requested an invalid number of tickets.  Please enter a number of tickets that is greater than zero.")
         if tickets_required > tickets_remaining:
             raise ValueError("You've requested more tickets than are available.  There are only {} tickets remaining.".format(tickets_remaining))
     except ValueError as err:
